@@ -1,0 +1,8 @@
+*bak
+*.bck
+*.dsn
+*.ses
+hardware/checkpoints/*
+_autosave-*.kicad_pcb
+gui_defaults.par
+*_old

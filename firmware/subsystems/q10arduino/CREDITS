@@ -1,0 +1,3 @@
+Original Q10 keyboard and I2C OLED code - https://github.com/Ibuprofen/blackberry_q10_keyboard
+Original IO expander keypad code - https://github.com/joeyoung/arduino_keypads/
+Added handling IO expander PCA9555, rewrote 

@@ -1,0 +1,9 @@
+The idea is of https://twitter.com/arturo182 and Philippe Cadic
+
+The base of the board is Philippe Cadic's https://github.com/ccadic/Q10OLED
+
+Keypad library for GPIO extender (base of Keypad_PCA955X) is Joe Young's https://github.com/joeyoung/arduino_keypads
+
+USB-C footprint is https://github.com/arturo182/GT-USB-7010 (LCSC.com carries this, search for USB Type C 16p)
+
+LoRa module RFM95 and ESP-WROOM-32 KiCad from github.com/automote
