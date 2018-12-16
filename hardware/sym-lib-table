@@ -3,6 +3,6 @@
   (lib (name hiroseQ10)(type Legacy)(uri ${KIPRJMOD}/libs/hiroseQ10.lib)(options "")(descr ""))
   (lib (name LoRaPagerESP32-rescue)(type Legacy)(uri ${KIPRJMOD}/LoRaPagerESP32-rescue.lib)(options "")(descr ""))
   (lib (name JD-T1800)(type Legacy)(uri ${KIPRJMOD}/libs/JD-T1800.lib)(options "")(descr ""))
-  (lib (name ERC12864FS-12.1)(type Legacy)(uri C:/Users/vic/Dropbox/projects/LoRaWAN/LoRaPagerESP32/hardware/libs/ERC12864FS-12.1.lib)(options "")(descr ""))
-  (lib (name Z240IT010)(type Legacy)(uri C:/Users/vic/Dropbox/projects/LoRaWAN/LoRaPagerESP32/hardware/libs/Z240IT010.lib)(options "")(descr ""))
+  (lib (name ERC12864FS-12.1)(type Legacy)(uri ${KIPRJMOD}/libs/ERC12864FS-12.1.lib)(options "")(descr ""))
+  (lib (name Z240IT010)(type Legacy)(uri ${KIPRJMOD}/libs/Z240IT010.lib)(options "")(descr ""))
 )
