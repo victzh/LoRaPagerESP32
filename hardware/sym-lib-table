@@ -5,4 +5,7 @@
   (lib (name JD-T1800)(type Legacy)(uri ${KIPRJMOD}/libs/JD-T1800.lib)(options "")(descr ""))
   (lib (name ERC12864FS-12.1)(type Legacy)(uri ${KIPRJMOD}/libs/ERC12864FS-12.1.lib)(options "")(descr ""))
   (lib (name Z240IT010)(type Legacy)(uri ${KIPRJMOD}/libs/Z240IT010.lib)(options "")(descr ""))
+  (lib (name esp-32_wroom32_Exact)(type Legacy)(uri ${KIPRJMOD}/libs/esp-32_wroom32_Exact.lib)(options "")(descr ""))
+  (lib (name RFM_module)(type Legacy)(uri ${KIPRJMOD}/libs/RFM_module.lib)(options "")(descr ""))
+  (lib (name XF2M-3015-1A)(type Legacy)(uri ${KIPRJMOD}/libs/XF2M-3015-1A.lib)(options "")(descr ""))
 )
