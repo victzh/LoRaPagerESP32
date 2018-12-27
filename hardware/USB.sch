@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:LoRaPagerESP32-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -15,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L LoRaPagerESP32-rescue:USB_C_Receptacle_USB2.0-Connector J?
+L Connector:USB_C_Receptacle_USB2.0 J?
 U 1 1 5BEA6630
 P 1650 2350
 AR Path="/5BEA6630" Ref="J?"  Part="1" 

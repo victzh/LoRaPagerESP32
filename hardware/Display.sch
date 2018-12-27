@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:LoRaPagerESP32-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -28,7 +27,7 @@ F 3 "" H 3900 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LoRaPagerESP32-rescue:Z240IT010-Z240IT010 LCD?
+L Z240IT010:Z240IT010 LCD?
 U 1 1 5BF5CD56
 P 3550 4150
 AR Path="/5BF5CD56" Ref="LCD?"  Part="1" 
