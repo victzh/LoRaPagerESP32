@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:LoRaPagerESP32-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -122,8 +123,6 @@ Wire Wire Line
 	2950 4050 3100 4050
 Connection ~ 2950 3350
 Wire Wire Line
-	2750 2100 2750 2850
-Wire Wire Line
 	2750 4150 3050 4150
 Connection ~ 2750 2100
 Wire Wire Line
@@ -151,8 +150,6 @@ Wire Wire Line
 Connection ~ 2600 1700
 Wire Wire Line
 	3000 1400 2850 1400
-Wire Wire Line
-	2850 1400 2850 2950
 Wire Wire Line
 	2850 4350 3050 4350
 Wire Wire Line
@@ -701,16 +698,6 @@ F 3 "~" H 4400 2850 50  0001 C CNN
 	1    4400 2850
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4200 2950 2850 2950
-Connection ~ 2850 2950
-Wire Wire Line
-	2850 2950 2850 4350
-Wire Wire Line
-	4200 2850 2750 2850
-Connection ~ 2750 2850
-Wire Wire Line
-	2750 2850 2750 4150
 NoConn ~ 5600 2950
 NoConn ~ 5600 3050
 NoConn ~ 5600 3150
@@ -723,4 +710,20 @@ NoConn ~ 3100 4950
 NoConn ~ 3100 5050
 Text Label 2850 4600 2    50   ~ 0
 LEDK
+Wire Wire Line
+	2750 2100 2750 2950
+Wire Wire Line
+	2850 1400 2850 2850
+Wire Wire Line
+	2850 2950 2850 4350
+Connection ~ 2750 2950
+Wire Wire Line
+	2750 2950 2750 4150
+Wire Wire Line
+	2750 2950 4200 2950
+Wire Wire Line
+	4200 2850 2850 2850
+Connection ~ 2850 2850
+Wire Wire Line
+	2850 2850 2850 2950
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-15203204223091745
+15207749921292673
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (http://www.bulgin.com/media/bulgin/data/Battery_holders.pdf)
@@ -48363,6 +48363,13 @@ ST Morpho Connector 144 STLink
 148
 148
 modules
+1TS009
+
+
+0
+2
+2
+modules
 5WAY_sw
 
 
@@ -48432,6 +48439,13 @@ RFM92_95_96_98
 0
 16
 16
+modules
+Test_bridge_2.54mm
+
+
+0
+2
+2
 modules
 USB_C_Receptacle_GT-USB-7010
 USB TYPE C, RA RCPT PCB, SMT, https://github.com/arturo182/GT-USB-7010/raw/master/GT-USB-7010.pdf

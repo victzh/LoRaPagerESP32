@@ -6,8 +6,14 @@
 
 #include "Keypad_PCA955X.h"
 
+#define LORAPAGERESP32
+
 // display
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
+#ifdef LORAPAGERESP32
+U8G2_ST7565_NHD_C12864_1_4W_HW_SPI u8g2(U8G2_R0, 4, 2, 13); // Clone of new haven's on LoRaPagerESP32
+#else
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE); // OLED on Felipe's board
+#endif
 const byte LCDROWS = 5;
 const byte LCDCOLS = 21;
 const byte FONTHEIGHT = 11;
@@ -16,11 +22,68 @@ char buf[LCDROWS][LCDCOLS + 1];
 short int pos = 0;
 
 // keyboard
-const byte ROWS = 7;
-const byte COLS = 6;
-
 const byte KS1 = '^'; // case shift character
 const byte KS2 = '%'; // symbol lock character
+
+#ifdef LORAPAGERESP32
+const int CHARGE_STAT = 35;
+const int KB_LED = 32;
+const byte ROWS = 8;
+const byte COLS = 5;
+
+char lowerKeys[ROWS][COLS] = {
+    {'q', 'e', 'r', 'u', 'o'},
+    {'w', 's', 'g', 'h', 'l'},
+    {KS2, 'd', 't', 'y', 'i'},
+    {'a', 'p', KS1, '{', '<'},
+    {'>', 'x', 'v', 'b', '$'},
+    {' ', 'z', 'c', 'n', 'm'},
+    {'&', KS1, 'f', 'j', 'k'},
+    {'1', '2', '3', '4', '5'}
+};
+
+char upperKeys[ROWS][COLS] = {
+    {'Q', 'E', 'R', 'U', 'O'},
+    {'W', 'S', 'G', 'H', 'L'},
+    {KS2, 'D', 'T', 'Y', 'I'},
+    {'A', 'P', KS1, '{', '<'},
+    {'>', 'X', 'V', 'B', '$'},
+    {' ', 'Z', 'C', 'N', 'M'},
+    {'&', KS1, 'F', 'J', 'K'},
+    {'1', '2', '3', '4', '5'}
+};
+
+char symKeys[ROWS][COLS] = {
+    {'#', '2', '3', '_', '+'},
+    {'1', '4', '/', ':', '"'},
+    {KS2, '5', '(', ')', '-'},
+    {'*', '@', KS1, '{', '<'},
+    {'>', '8', '?', '!', '$'},
+    {' ', '7', '9', ',', '.'},
+    {'0', KS1, '6', ';', '\''},
+    {'1', '2', '3', '4', '5'}
+};
+
+// all numbers are +1 since 0 is equal to NO_KEY
+// we're using this keyboard as a lookup table for the
+// above character arrays
+char indexKeys[ROWS][COLS] = {
+    { 1,  2,  3,  4,  5},
+    { 6,  7,  8,  9, 10},
+    {11, 12, 13, 14, 15},
+    {16, 17, 18, 19, 20},
+    {21, 22, 23, 24, 25},
+    {26, 27, 28, 29, 30},
+    {31, 32, 33, 34, 35},
+    {36, 37, 38, 39, 40}
+};
+
+byte rowPinsEx[ROWS] = {0, 1, 2, 3, 4, 5, 6, 7};
+byte colPinsEx[COLS] = {8, 9, 10, 11, 12};
+#else
+const int KB_LED = 15;
+const byte ROWS = 7;
+const byte COLS = 6;
 
 char lowerKeys[ROWS][COLS] = {
     {'q', 'e', 'r', 'u', 'o', '1'},
@@ -71,6 +134,7 @@ char indexKeys[ROWS][COLS] = {
 //byte colPins[COLS] = {2, 0, 4, 16, 17};
 byte rowPinsEx[ROWS] = {0, 1, 2, 3, 4, 5, 6};
 byte colPinsEx[COLS] = {8, 9, 10, 11, 12, 13};
+#endif
 
 //Keypad indexedKeypad(makeKeymap(indexKeys), rowPins, colPins, ROWS, COLS);
 Keypad_PCA955X indexedKeypad(makeKeymap(indexKeys), rowPinsEx, colPinsEx, ROWS, COLS, 0x20, PCA9555);
@@ -157,17 +221,21 @@ static int key_light_ms;
 void checkKeyLight(char key)
 {
     if (key != NO_KEY) {
-        digitalWrite(15, HIGH);
+        digitalWrite(KB_LED, HIGH);
         key_light_ms = millis() + 3000;
     } else {
-        if (millis() > key_light_ms) digitalWrite(15, LOW);
+        if (millis() > key_light_ms) digitalWrite(KB_LED, LOW);
     }
 }
 
+int millisReport;
+
+
 void setup() {
     Serial.begin(115200);
-    pinMode(15, OUTPUT);
+    pinMode(KB_LED, OUTPUT);
     checkKeyLight(1);
+    millisReport = millis();
 
     clearBuf();
     strncpy(buf[0], "Hello!", 6);
@@ -202,5 +270,13 @@ void loop() {
         do {
             draw();
         } while (u8g2.nextPage());
+    }
+    if (millis() > millisReport) {
+        if (digitalRead(CHARGE_STAT)) {
+            Serial.println("Charging...");
+        } else {
+            Serial.println("Not charging...");
+        }
+        millisReport = millis() + 2000;
     }
 }
